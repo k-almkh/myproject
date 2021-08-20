@@ -1,0 +1,14 @@
+@import 'admin';
+@import "~bootswatch/dist/cerulean/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/cerulean/bootswatch";
+@import '~font-awesome';
+
+// @import '~mdb-ui-kit/css/mdb.min.css';
+
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+

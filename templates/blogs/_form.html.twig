@@ -1,0 +1,32 @@
+{{ form_start(form) }}
+  <div class="form-group">
+    <div class="row mb-3">
+             <div class="col-sm-1">
+                {{ form_label(form.title) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_errors(form.title) }}
+                {{ form_widget(form.title, {'attr': {'class':'form-control'}}) }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-1">
+                {{ form_label(form.content) }}
+            </div>
+            <div class="col-sm-8">
+                {{ form_errors(form.content) }}
+                {{ form_widget(form.content, {'attr': {'class':'form-control', 'rows': 3}}) }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-sm-1">
+                {{ form_label(form.category) }}
+            </div>
+           <div class="col-sm-8">
+                {{ form_errors(form.category) }}
+                {{ form_widget(form.category, {'attr': {'class':'form-control'}}) }}
+            </div>
+        </div>
+        <button class="btn btn-primary">{{ button_label|default('Speichern') }}</button>
+  </div>
+{{ form_end(form) }}

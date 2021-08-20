@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}neues Blog{% endblock %}
+
+{% block body %}
+    {# <h1>neues Blog erstellen</h1> #}
+<div class="image-aboutus-banner">
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+         <h1 class="lg-text">neues Blog erstellen</h1>
+       </div>
+    </div>
+</div>
+</div>
+<div class="container py-5">
+    {{ include('blogs/_form.html.twig') }}
+
+    <a class="btn btn-success mt-2" href="{{ path('blogs_index') }}">Zurück</a>
+</div>
+{% endblock %}
+{% block footer %}
+    <footer class="bg-dark text-center text-white fixed-bottom" >{% include "layout/footer.html.twig" %} </footer>
+{% endblock %}  

@@ -1,0 +1,5 @@
+
+<form method="post" action="{{ path('blogs_delete', {'id': article.id}) }}" onsubmit="return confirm('Möchten Sie sicher dieses Blos    löschen?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ article.id) }}">
+    <button class="btn btn-danger mt-2">Löschen</button>
+ </form>

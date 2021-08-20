@@ -1,0 +1,5 @@
+[17-Aug-2021 14:15:54 UTC] Xdebug: [Step Debug] Time-out connecting to debugging client, waited: 200 ms. Tried: 127.0.0.1:9003 (through xdebug.client_host/xdebug.client_port) :-(
+[19-Aug-2021 11:10:21 UTC] PHP Fatal error:  Uncaught Error: Class "Symfony\Bundle\FrameworkBundle\Controller\AbstractController" not found in C:\php_projects\porojects_test\my_project\src\Controller\BlogsController.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\php_projects\porojects_test\my_project\src\Controller\BlogsController.php on line 20

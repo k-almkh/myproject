@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog bearbeiten{% endblock %}
+
+{% block body %}
+<div class="image-aboutus-banner">
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+         <h1 class="lg-text">Blog bearbeiten</h1>
+       </div>
+    </div>
+</div>
+</div>
+<div class="container py-5">
+   
+    {{ include('blogs/_form.html.twig', {'button_label': 'Aktualisieren'}) }}
+     <div class="row">
+       <div class="col-1"><a class="btn btn-success mt-2" href="{{ path('blogs_index') }}">Zurück</a></div> 
+       <div class="col-1">
+       {# {{ include('blogs/_delete_form.html.twig') }} #}
+        {{ include('deletearticle/_delete_form.html.twig') }}
+       </div> 
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+    <footer class="bg-dark text-center text-white fixed-bottom" >{% include "layout/footer.html.twig" %} </footer>
+{% endblock %}

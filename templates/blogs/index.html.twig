@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+
+<div class="image-aboutus-banner">
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+         <h1 class="lg-text">Blogs</h1>
+         <p class="image-aboutus-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+       </div>
+    </div>
+</div>
+</div>
+<div class="py-3">
+{% for article in articles %}
+ 
+<section class="p-3 shadow-lg rounded  mt-4">
+    <article class="mb-2  ">
+        <h2>{{ article.title }}</h2>
+        <div class="metdata">
+            am: {{ article.createAt | date("m.d.Y") }} um: {{ article.createAt | date("H:i") }} Uhr
+           <span class="badge bg-danger">
+                {{ article.category }}
+           </span>
+        </div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            <p>{{ article.content }}</p>
+            <a class="btn btn-info" href="{{ path('blogs_show', {'id': article.id}) }}">mehr Lesen</a>
+        </div>
+        {# <a class="btn btn-info mt-2" href="{{ path('blogs_show', {'id': article.id}) }}">show</a> #}
+       
+        {% if app.user %}
+           {% if is_granted('ROLE_ADMIN') %}
+                <a class="btn btn-primary mt-2" href="{{ path('blogs_edit', {'id': article.id}) }}">Bearbeiten</a>
+            {% endif %}
+        {% endif %}
+    </article>
+</section>
+{% endfor %}
+{% if app.user %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-success mt-2" href="{{ path('blogs_new') }}">Anlegen</a>
+    {% endif %}
+{% endif %}
+
+
+ </div>
+{% endblock %}

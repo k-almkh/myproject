@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog {{ article.id }} {% endblock %}
+
+{% block body %}
+   <div class="image-aboutus-banner">
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+         <h1 class="lg-text">Blogs</h1>
+         <p class="image-aboutus-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+       </div>
+    </div>
+</div>
+</div>
+    <section class="p-3 shadow-lg rounded  mt-4">
+        <article class="mb-2  ">
+            <h2>{{ article.title }}</h2>
+            <div class="metdata">
+                am: {{ article.createAt | date("m.d.Y") }} um: {{ article.createAt | date("H:i") }} Uhr
+            <span class="badge bg-danger">
+                   {{ article.category }}
+            </span>
+            <span class="badge bg-success">
+                  {{ article.comments | length }} Kommentar
+            </span>
+            </div>
+            <div class="content">
+                <img src="{{ article.image }}" alt="">
+                <p>{{ article.content }}</p>
+            </div>
+            {# <a class="btn btn-success mt-2" href="{{ path('blogs_show', {'id': article.id}) }}">show</a>
+            <a class="btn btn-danger mt-2" href="{{ path('blogs_edit', {'id': article.id}) }}">edit</a> #}
+        </article>
+        <div class="mt-3">
+            <a class="btn btn-success" href="{{ path('blogs_index') }}">Zurück</a>
+          {% if app.user %}
+           {% if is_granted('ROLE_ADMIN') %}
+               <a class="btn btn-primary" href="{{ path('blogs_edit', {'id': article.id}) }}">Bearbeiten</a>
+            {{ include('deletearticle/_delete_form.html.twig') }}
+            {# {{ include('blogs/_delete_form.html.twig') }} #}
+            {% endif %}
+        {% endif %}
+           
+        </div>
+    </section>
+
+
+
+
+
+
+<section class="articles mt-3" id="comments">
+    <h2>Kommentare</h2>
+    {% for comment in article.comments %}
+    <hr class="my-0" />
+        <div class="mt-3">
+            <div class="row">
+                <div class="md-colo-3 text-danger">
+                    {{comment.author}}   <small class="text-black-50"> {{ comment.creatAt | ago}}</small>
+                </div>
+            </div>
+            <p>{{comment.content}}</p>
+        </div>
+        
+    {% endfor %}
+</section>
+
+{% if not app.user %}
+    <h3 class="text-danger">Sie müssen anmelden, um  ein Kommantar anzulegen!</h3>
+     <a class="btn btn-primary" href="{{ path('app_login') }}"> Anmelden</a>
+{% else %}
+    <section class="articles mt-3">
+    <h2>Kommentar Anlegen</h2>
+    {{ form_start(commentForm)}}
+    <div class="form-group">
+        {# <div class="row mb-3">
+                 <div class="col-sm-1">
+                    {{ form_label(commentForm.author) }}
+                </div>
+                <div class="col-sm-8">
+                    {{ form_errors(commentForm.author) }}
+                    {{ form_widget(commentForm.author, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div> #}
+            <div class="row mb-3">
+                {# <div class="col-sm-1">
+                    {{ form_label(commentForm.content) }}
+                </div> #}
+                <div class="col-sm-8">
+                    {{ form_errors(commentForm.content) }}
+                    {{ form_widget(commentForm.content, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            
+            <button class="btn btn-primary">Kommentieren</button>
+      </div>
+    
+    {{ form_end(commentForm)}}
+</section>
+{% endif %}
+
+{% endblock %}
